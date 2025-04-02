@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DesafioFormulario</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="caixa-cadastro">
+    <form id="formCadastro" action="" method="post" class="form-cadastro"> 
+
+      <!--NOME-->
+        <div class="form-grupo">
+            <label for="nome">Nome Completo*</label>
+            <input type="text" id="nome" name="nome" required><!--Campo obrigatorio(required)-->
+        </div>
+
+         <!--EMAIL-->
+        <div class="form-grupo">
+            <label for="email">E-mail*</label>
+            <input type="email" id="email" name="email" required><!--Campo obrigatorio(required)-->
+        </div>
+
+         <!--SENHA-->
+        <div class="form-grupo">
+            <label for="senha">Senha*</label>
+            <input type="password" id="senha" name="senha" required minlength="8"> <!--Campo obrigatorio(required)  Minlength=8 faz com que o minimo de caracteres seja 8-->
+            <small>Mínimo 8 caracteres</small>
+        </div>
+
+        <div class="form-grupo">
+            <label for="confirmar_senha">Confirmar Senha*</label>
+            <input type="password" id="confirmar_senha" name="confirmar_senha" required>
+        </div>
+
+        <!--BUTTON-SUBMIT-->
+        <button type="submit" class="submit-button">Criar Conta</button>
+    </form>
+</div>
+<script> //script JS para cadastro
+  
+  // VALIDAR SENHA
+  const nome = document.getElementById('nome').value; //Captura o nome no formulario
+  const email = document.getElementById('email').value; //Captura o email no formulario
+  document.getElementById('formCadastro').addEventListener('submit', function(e) { //CAPTURA AMBAS SENHA E CONFIRMARSENHA
+      const senha = document.getElementById('senha').value;
+      const confirmarSenha = document.getElementById('confirmar_senha').value; 
+      
+      if (senha !== confirmarSenha) { //SE SENHA DIFERENTE DE CORFIRMARSENHA = ERROR
+          e.preventDefault();//Previne envio de formulario se senhas não coincidirem
+          alert('As senhas não coincidem!');
+      }
+
+
+      const mensagem = `
+    === DADOS CADASTRAIS ===
+        Nome: ${nome}
+        E-mail: ${email}
+        Senha: ${senha}
+    ========================
+    Obrigado por se cadastrar!`; //Mensagem com dados do formulario
+
+      alert(mensagem);//Exibe a mensagem
+
+      //this.submit(); //função para envio de formulario. 
+      // formulario não esta sendo enviado devido o "e.preventDefault()" Na linha 53, Remova ele para envio correto do formulario, ou use a função "this.submit()"
+      
+  });
+</script>
+</body>
+</html>
