@@ -42,11 +42,12 @@
 <script> //script JS para cadastro
   
   // VALIDAR SENHA
-  const nome = document.getElementById('nome').value; //Captura o nome no formulario
-  const email = document.getElementById('email').value; //Captura o email no formulario
+
   document.getElementById('formCadastro').addEventListener('submit', function(e) { //CAPTURA AMBAS SENHA E CONFIRMARSENHA
       const senha = document.getElementById('senha').value;
       const confirmarSenha = document.getElementById('confirmar_senha').value; 
+      const nome = document.getElementById('nome').value; //Captura o nome no formulario
+      const email = document.getElementById('email').value; //Captura o email no formulario
       
       if (senha !== confirmarSenha) { //SE SENHA DIFERENTE DE CORFIRMARSENHA = ERROR
           e.preventDefault();//Previne envio de formulario se senhas não coincidirem
